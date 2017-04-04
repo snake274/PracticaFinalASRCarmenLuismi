@@ -102,7 +102,7 @@ public class VisitorAPI extends Application {
     	  return String.format("Hola %s!", visitor.getName());
       }
       store.persist(visitor);
-      return String.format("Hola %s! Estas en una app de Bluemix", visitor.getName());
+      return String.format("Hola %s! Estas en una app de Bluemix hecha en Eclipse", visitor.getName());
 
     }
 
