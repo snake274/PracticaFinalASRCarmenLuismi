@@ -1,6 +1,6 @@
 ---
 applications:
- - name: GetStartedJava
+ - name: PruebaCloud
    random-route: true
    path: target/GetStartedJava.war
    memory: 512M
