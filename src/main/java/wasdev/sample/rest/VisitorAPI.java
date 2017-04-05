@@ -28,6 +28,7 @@ import javax.ws.rs.core.Application;
 
 import com.google.gson.Gson;
 
+import wasdev.sample.Traductor;
 import wasdev.sample.Visitor;
 import wasdev.sample.store.VisitorStore;
 import wasdev.sample.store.VisitorStoreFactory;
@@ -101,8 +102,10 @@ public class VisitorAPI extends Application {
       if(store == null) {
     	  return String.format("Hola %s!", visitor.getName());
       }
+      String texto = Traductor.translate(visitor.getName());
+      visitor.setName(texto);
       store.persist(visitor);
-      return String.format("Hola %s! Estas en una app de Bluemix hecha en Eclipse", visitor.getName());
+      return String.format("Introducido %s! La traduccion es %s", texto, visitor.getName());
 
     }
 
