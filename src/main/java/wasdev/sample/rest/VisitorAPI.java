@@ -103,10 +103,9 @@ public class VisitorAPI extends Application {
     	  return String.format("Hola %s!", visitor.getName());
       }
       String texto1 = visitor.getName();
-      String texto = Traductor.translate(visitor.getName());
-      visitor.setName(texto);
+      visitor.setName(Traductor.translate(visitor.getName()));
       store.persist(visitor);
-      return String.format("Introducido %s. La traduccion es %s", texto1, visitor.getName());
+      return String.format("Introduhuhgughcido %s. La traduccion es %s", texto1, visitor.getName());
 
     }
 

@@ -12,7 +12,7 @@ public class Traductor
 	public static String translate(String palabra)
 	{
 		LanguageTranslator service = new LanguageTranslator();
-		service.setUsernameAndPassword("244b9afc-bfa0-441c-b94c-cea345a754e7", "YNRZyG3Um0cB");
+		service.setUsernameAndPassword("6533994a-2a3f-43af-a594-5231b4ca7da5", "wEca1MCK7kDP");
 		
 		service.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
 		TranslationResult translationResult = service.translate(palabra, Language.SPANISH, Language.ENGLISH).execute();
