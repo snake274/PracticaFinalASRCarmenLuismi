@@ -99,13 +99,14 @@ public class VisitorAPI extends Application {
     @Produces("application/text")
     @Consumes("application/json")
     public String newToDo(Visitor visitor) {
-      if(store == null) {
-    	  return String.format("Hola %s!", visitor.getName());
-      }
-      String texto1 = visitor.getName();
-      visitor.setName(Traductor.translate(visitor.getName()));
-      store.persist(visitor);
-      return String.format("Introduhuhgughcido %s. La traduccion es %s", texto1, visitor.getName());
+    	if(store == null) {
+      	  return String.format("Palabra escrita: %s!", visitor.getName());
+        }
+        String nombreOriginal = visitor.getName();
+        String nombreTraducido = Traductor.translate(visitor.getName());
+        visitor.setName(nombreTraducido);
+        store.persist(visitor);
+        return String.format("Introduciste: %s. La palabra en inglés es: %s.", nombreOriginal, nombreTraducido);
 
     }
 

@@ -1,10 +1,10 @@
 ---
 applications:
- - name: PruebaCloud
+ - name: PracticaASRLuismi
    random-route: true
    path: target/GetStartedJava.war
    memory: 512M
-   host: PruebaCloudEclipse
+   host: PracticaASRLuismi
    domain: mybluemix.net
    instances: 1
    buildpack: liberty-for-java_v3_7-20170118-2046
