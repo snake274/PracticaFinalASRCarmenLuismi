@@ -15,6 +15,8 @@
  *******************************************************************************/ 
 package wasdev.sample.rest;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ import javax.ws.rs.core.Application;
 
 import com.google.gson.Gson;
 
+import wasdev.sample.Imagen;
 import wasdev.sample.Traductor;
 import wasdev.sample.Visitor;
 import wasdev.sample.store.VisitorStore;
@@ -56,20 +59,20 @@ public class VisitorAPI extends Application {
     @GET
     @Path("/")
     @Produces({"application/json"})
-    public String getVisitors() {
+    public ArrayList<String> getVisitors() {
 		
 		if (store == null) {
-			return "[]";
+			return null;
 		}
 		
-		List<String> names = new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<String>();
 		for (Visitor doc : store.getAll()) {
 			String name = doc.getName();
 			if (name != null){
 				names.add(name);
 			}
 		}
-		return new Gson().toJson(names);
+		return names;
     }
     
     /**
@@ -94,19 +97,22 @@ public class VisitorAPI extends Application {
      * </code>
      * @param visitor The new Visitor to create.
      * @return The Visitor after it has been stored.  This will include a unique ID for the Visitor.
+     * @throws MalformedURLException 
+     * @throws IOException 
      */
     @POST
     @Produces("application/text")
     @Consumes("application/json")
-    public String newToDo(Visitor visitor) {
-    	if(store == null) {
+    public void newToDo(Visitor visitor) throws MalformedURLException {
+    	/*if(store == null) {
       	  return String.format("Palabra escrita: %s!", visitor.getName());
         }
-        String nombreOriginal = visitor.getName();
-        String nombreTraducido = Traductor.translate(visitor.getName());
-        visitor.setName(nombreTraducido);
+        String url = visitor.getName();
+        String resultado = Imagen.analyze(url);
+       // String nombreTraducido = Traductor.translate(visitor.getName());
+        visitor.setName(resultado)*/
         store.persist(visitor);
-        return String.format("Introduciste: %s. La palabra en inglés es: %s.", nombreOriginal, nombreTraducido);
+        return;
 
     }
 
