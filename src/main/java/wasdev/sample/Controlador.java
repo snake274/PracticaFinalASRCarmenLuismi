@@ -73,23 +73,25 @@ public class Controlador extends HttpServlet {
         }
         
         
-        
+        ArrayList<String> listaLikes = new ArrayList<String>();
         if(listaComentario != null)
         {
-            ArrayList<String> listaLikes = new ArrayList<String>();
+            
             for(int i=0; i<listaComentario.size(); i++)
             {
                 listaLikes.add(Sentimiento.analyze(listaComentario.get(i)));
             }
-            aplicacion.setAttribute("listaComentario", listaComentario);
-            aplicacion.setAttribute("listaLikes", listaLikes);
+            
         }
+        
+        aplicacion.setAttribute("listaComentario", listaComentario);
+        aplicacion.setAttribute("listaLikes", listaLikes);
         
         if(palabra != null)
         {
         	String traduccion = Traductor.translate(palabra);
-        	aplicacion.setAttribute("palabra", palabra);
-        	aplicacion.setAttribute("traduccion", traduccion);
+        	sesion.setAttribute("palabra", palabra);
+        	sesion.setAttribute("traduccion", traduccion);
         }
         
         
